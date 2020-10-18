@@ -81,7 +81,7 @@ router.post('/', function (req, res, next) {
             });
         }
     } else {
-        res.render('erro', {
+        res.render('error', {
             err: 'Accès interdit, veuillez vous connecter.',
             ret: '/'
         });
