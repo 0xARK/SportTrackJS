@@ -62,26 +62,3 @@ html(lang='fr')
                                                     button.btn.btn-block.btn-primary(type='submit') S'inscrire
                                                 .mt-3.col-10.offset-1.mb-2.d-block.d-md-none
                                                     a.btn.btn-block.btn-primary.return(style='cursor: pointer; color: white; text-decoration: none;' href='/') Retour
-
-                //table(border='1')
-                    thead
-                        tr
-                            th email
-                            th firstName
-                            th lastName
-                            th birthday
-                            th gender
-                            th height
-                            th weight
-                            th pwd
-                    tbody
-                        each val in data
-                            tr
-                                td= val.email
-                                td= val.firstName
-                                td= val.lastName
-                                td= val.birthday
-                                td= val.gender
-                                td= val.height
-                                td= val.weight
-                                td= val.pwd
