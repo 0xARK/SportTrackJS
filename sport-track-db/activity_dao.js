@@ -80,6 +80,7 @@ const ActivityDAO = function () {
     /**
      * This method allows to get all information of all activities
      *
+     * @param callback - The calback function
      * @return array
      */
 
@@ -90,7 +91,8 @@ const ActivityDAO = function () {
     /**
      * This method allows to get all information of all activities of a sportsman
      *
-     * @param string key - The email of sportsman
+     * @param key - The email of sportsman
+     * @param callback - The callback function
      * @return array
      */
 
@@ -103,6 +105,14 @@ const ActivityDAO = function () {
         );
     };
 
+    /**
+     * This method allows to get all information of an activity
+     *
+     * @param key - The id of the activity to retrieve
+     * @param callback - The callback function
+     * @return array
+     */
+
     this.findByKey = function (key, callback) {
         db.get("SELECT * FROM Activity WHERE idActivity = ?",
             [
@@ -111,6 +121,14 @@ const ActivityDAO = function () {
             callback
         );
     };
+
+    /**
+     * This method allows to get all information of an activity and all of his assocated entries
+     *
+     * @param key - The id of the activity to retrieve
+     * @param callback - The callback function
+     * @return array
+     */
 
     this.findByKeyWithEntries = function (key, callback) {
         this.findByKey(key, function (activity_err, activity) {
