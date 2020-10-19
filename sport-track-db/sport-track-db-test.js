@@ -60,7 +60,7 @@ activity_dao.insert(activity, (error, value) => {
     activity_entry_dao.insertAll([new ActivityEntry(value, '13:00:15', 100, 47, -2, 17),
         new ActivityEntry(value, '13:00:38', 90, 46, -1, 17)], (error, id) => {
 
-         activity_entry_dao.update(id, new ActivityEntry(value, '13:00:15', 85, 52, 42, -5), (error, value))
+         activity_entry_dao.update(id, new ActivityEntry(value, '13:00:15', 85, 52, 42, -5), (success))
 
     })
 });

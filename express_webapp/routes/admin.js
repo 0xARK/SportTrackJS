@@ -85,8 +85,22 @@ router.post('/', function (req, res, next) {
 
                 if (rows.length > 0) {
                     for (let r in rows) {
-                        activity_entry_dao.deleteFromActivity(rows[r].idActivity);
-                        activity_dao.delete(rows[r].idActivity);
+                        activity_entry_dao.deleteFromActivity(rows[r].idActivity, (success) => {
+                            if (!success) {
+                                res.render('error', {
+                                    err: 'Impossible de supprimer les activités',
+                                    ret: '/admin'
+                                })
+                            }
+                        });
+                        activity_dao.delete(rows[r].idActivity, (success) => {
+                            if (!success) {
+                                res.render('error', {
+                                    err: 'Impossible de supprimer les activités',
+                                    ret: '/admin'
+                                })
+                            }
+                        });
                     }
                 }
 
@@ -110,8 +124,22 @@ router.post('/', function (req, res, next) {
             } else if (rows) {
 
                 for (let r in rows) {
-                    activity_entry_dao.deleteFromActivity(rows[r].idActivity);
-                    activity_dao.delete(rows[r].idActivity);
+                    activity_entry_dao.deleteFromActivity(rows[r].idActivity, (success) => {
+                        if (!success) {
+                            res.render('error', {
+                                err: 'Impossible de supprimer les activités',
+                                ret: '/admin'
+                            })
+                        }
+                    });
+                    activity_dao.delete(rows[r].idActivity, (success) => {
+                        if (!success) {
+                            res.render('error', {
+                                err: 'Impossible de supprimer les activités',
+                                ret: '/admin'
+                            })
+                        }
+                    });
                 }
 
             } else {

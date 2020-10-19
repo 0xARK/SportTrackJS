@@ -28,8 +28,22 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     if (req.session.connected_user) {
         if (req.body.page === "delete_activity") {
-            activity_entry_dao.deleteFromActivity(req.body['activity-id'], null)
-            activity_dao.delete(req.body['activity-id'], null);
+            activity_entry_dao.deleteFromActivity(req.body['activity-id'], (success) => {
+                if (!success) {
+                    res.render('error', {
+                        err: 'Impossible de supprimer les activités',
+                        ret: '/activities'
+                    })
+                }
+            })
+            activity_dao.delete(req.body['activity-id'], (success) => {
+                if (!success) {
+                    res.render('error', {
+                        err: 'Impossible de supprimer les activités',
+                        ret: '/activities'
+                    })
+                }
+            });
             activity_dao.findAllFromSportsman(req.session.connected_user, function (activity_err, activity_rows) {
                 if (activity_err !== null) {
                     console.log("ERROR= " + activity_err);
