@@ -1,4 +1,4 @@
-Sport performance tracker made with PHP
+Sport performance tracker made with NodeJS
 ==
 
 **Version 1.3.0**
